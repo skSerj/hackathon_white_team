@@ -11,22 +11,21 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 object ApiService {
-    private const val END_POINT: String = "https://api.themoviedb.org/3/movie/"
-    private const val API_KEY = "0b6b796d31e116b2fe20ae1c02d9dc83"
+    private const val END_POINT: String = "http://api.openweathermap.org/data/2.5/"
+    private const val API_KEY = "fed403fe4bf340fa270d9a48cfa0b2cf"
+    private const val CITY = "Kharkiv"
+    private const val LANGUAGE = "ru"
+    private const val UNITS = "metric"
     private var weatherApi: WeatherApi
 
-    fun getFiveDayWeather() = weatherApi.fiveDays(API_KEY)
-    fun getSingleDayWeather(movieId: String) = weatherApi.singleDay(movieId, API_KEY)
+    fun getFiveDayWeather() = weatherApi.fiveDays(CITY, LANGUAGE, UNITS, API_KEY)
 
     interface WeatherApi {
-        @GET("popular")
-        fun fiveDays(@Query("api_key") apiKey: String): Single<>
-
-        @GET("{movie_id}")
-        fun singleDay(
-            @Path("movie_id") movieId: String,
-            @Query("api_key") apiKey: String
-        ): Single<>
+        @GET("forecast")
+        fun fiveDays(@Query("q") city: String,
+        @Query("lang") lang: String,
+        @Query("units") units: String,
+        @Query("appid") appid: String): Single<RequestModel>
     }
 
     init {
