@@ -1,11 +1,11 @@
 package com.sourceit.whiteteam
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sourceit.whiteteam.adapter.WeatherAdapter
@@ -50,9 +50,11 @@ class AllDaysWeather : Fragment() {
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
+                Log.d("MyApp", "response ok")
                 showInfo(it)
             }, {
                 Toast.makeText(view.context, "error", Toast.LENGTH_SHORT).show()
+                Log.d("MyApp", " response error")
                 it.printStackTrace()
             })
     }

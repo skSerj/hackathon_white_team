@@ -3,7 +3,7 @@ package com.sourceit.whiteteam.network
 import com.google.gson.annotations.SerializedName
 
 data class RequestModel(
-    @SerializedName("List")
+    @SerializedName("list")
     var list: List<WeatherInfo>
 )
 
