@@ -18,6 +18,7 @@ data class WeatherInfo(
 
 data class Main(
     var temp: Float,
+    @SerializedName("feels_like")
     var feelsLike: Float,
     var tempMin: Float,
     var tempMax: Float,
