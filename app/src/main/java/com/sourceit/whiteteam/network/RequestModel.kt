@@ -12,6 +12,7 @@ data class WeatherInfo(
     var weather: List<Weather>,
     var clouds: Clouds,
     var wind: Wind,
+    @SerializedName("dt_txt")
     var dtTxt: String
 )
 
